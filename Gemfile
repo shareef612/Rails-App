@@ -28,6 +28,9 @@ gem 'spring',        group: :development
 
 gem 'ckeditor'
 gem 'paperclip'
+gem 'devise', '~> 3.3.0'
+gem 'iscount'
+gem 'myemail'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

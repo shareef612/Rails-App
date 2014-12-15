@@ -1,4 +1,9 @@
 class PostsController < ApplicationController
+
+  require 'iscount'
+
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @posts = Post.all.order('created_at DESC')
   end
@@ -8,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
 
     if @post.save
       redirect_to @post
@@ -19,6 +24,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @input1 = @post.body
+    @result = Checkpost.runcheck(@input1)
   end
 
   def edit
